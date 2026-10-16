@@ -1,0 +1,151 @@
+{
+  "_note": "Target ranges measured from the 'Claudes learning curve' references on 2026-10-16 (see references/reference-notes.md). [min, max]; null = no limit. Metrics come from study.py report.json (shots/visual/audio) and motion_profile.py motion.json. longest_static_before_end_s ignores an end-card hold that runs to the last frame (measured separately as end_card_hold_s).",
+  "dark-glow-kinetic": {
+    "_from": "ClickUp Brain, Bolt hackathon",
+    "new_thing_every_s": [
+      1.0,
+      2.5
+    ],
+    "longest_static_before_end_s": [
+      null,
+      1.0
+    ],
+    "end_card_hold_s": [
+      2.0,
+      8.0
+    ],
+    "camera_moving_pct": [
+      20,
+      60
+    ],
+    "flash_frames_per_min": [
+      null,
+      3
+    ],
+    "brightness_mean": [
+      8,
+      70
+    ],
+    "loudness_lufs": [
+      -15,
+      -9
+    ],
+    "repeated_frames_in_motion_pct": [
+      null,
+      2.5
+    ]
+  },
+  "dark-glow-kinetic-hype": {
+    "_from": "Bolt hackathon (counters, flashes, metallic 3D accents)",
+    "new_thing_every_s": [
+      0.8,
+      1.6
+    ],
+    "longest_static_before_end_s": [
+      null,
+      1.0
+    ],
+    "end_card_hold_s": [
+      2.0,
+      8.0
+    ],
+    "camera_moving_pct": [
+      20,
+      60
+    ],
+    "flash_frames_per_min": [
+      4,
+      16
+    ],
+    "brightness_mean": [
+      8,
+      70
+    ],
+    "loudness_lufs": [
+      -12,
+      -8
+    ],
+    "repeated_frames_in_motion_pct": [
+      null,
+      2.5
+    ]
+  },
+  "3d-product-world": {
+    "_from": "Framer 3D launch, Urpal AI site",
+    "new_thing_every_s": [
+      0.9,
+      2.5
+    ],
+    "longest_static_before_end_s": [
+      null,
+      1.0
+    ],
+    "end_card_hold_s": [
+      2.0,
+      8.0
+    ],
+    "camera_moving_pct": [
+      40,
+      90
+    ],
+    "cuts_direction_carried_pct": [
+      50,
+      null
+    ],
+    "flash_frames_per_min": [
+      null,
+      2
+    ],
+    "brightness_mean": [
+      12,
+      70
+    ],
+    "loudness_lufs": [
+      -16,
+      -10
+    ],
+    "repeated_frames_in_motion_pct": [
+      null,
+      1.0
+    ]
+  },
+  "site-showcase": {
+    "_from": "Help Scout site, Urpal AI site",
+    "new_thing_every_s": [
+      0.9,
+      2.5
+    ],
+    "longest_static_before_end_s": [
+      null,
+      1.0
+    ],
+    "camera_moving_pct": [
+      5,
+      40
+    ],
+    "cuts_per_min": [
+      null,
+      6
+    ],
+    "repeated_frames_in_motion_pct": [
+      null,
+      1.0
+    ]
+  },
+  "crafted-story": {
+    "_from": "Slack Spaceship, Nike Flyknit, Style Frames titles (art-direction references; few hard numbers)",
+    "longest_static_before_end_s": [
+      null,
+      8.0
+    ],
+    "flash_frames_per_min": [
+      null,
+      1
+    ],
+    "repeated_frames_in_motion_pct": [
+      null,
+      7.0
+    ],
+    "_exception": "Nike Flyknit opens with 17 s of slow title fades on black, which the detector reads as still: a luxury-brand choice, not a SaaS pattern."
+  }
+}
