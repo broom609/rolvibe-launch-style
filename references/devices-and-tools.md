@@ -4,6 +4,24 @@ Defaults: 1920×1080 (or 1080×1920), 30 fps (60 fps for site/UI motion), every 
 time. Credits rule: Higgsfield (/katana, generate_image/video), Artlist generation and ElevenLabs need the user's
 go plus a cost estimate first. Local builds (brag-slim/HTML, After Effects, Blender, ffmpeg) are free.
 
+## Frosted glass on a light background (After Effects, scripted)
+- Per card: a controller null; a hidden matte shape (the card silhouette); a full-frame **adjustment layer** with Fast Box
+  Blur (radius 26-40, 3 iterations, repeat edge pixels) + Brightness +10, track-matted (ALPHA) to the silhouette; the
+  shadow above it, track-matted ALPHA_INVERTED to the same silhouette; then a body precomp: white fill 50 %, a specular,
+  a 1.5 px white inner stroke at 78 %, a 2 px #0B1020 bottom edge at 7 %. Keep colour blooms behind every card.
+- Traps (each cost a rebuild):
+  - A shadow under the card gets pulled into the glass by the backdrop blur (grey glass). Matte it to OUTSIDE the card.
+  - Specular: use a WHITE solid with a Gradient Ramp converted to alpha (Shift Channels: alpha <- luminance, RGB <- full on).
+    A black-to-white ramp in Screen mode inside a precomp adds black opacity and greys the glass.
+  - Masks are applied BEFORE effects, so a Ramp refills a masked layer's whole rectangle. Clip with a track matte instead.
+  - Assigning a layer as a track matte turns its visibility off. Re-enable it if it must also render (e.g. a logo used
+    as the matte for its own light pass).
+  - Parenting to a layer that is already keyed (a card mid-unfold) makes AE counter-scale the child. Reset the child's
+    scale and rotation after parenting.
+  - Opacity doesn't pass through parenting: drive each part with `parent.opacity * value / 100` so its own keys still work.
+- Morphing players (16:9 <-> 9:16): drive every part from W/H/R sliders (rect size expressions, createPath masks) instead
+  of scaling a precomp, so radius and stroke never distort; videos cover-fit by expression and share one video matte.
+
 ## Edge glow base
 - **HTML (brag-slim):** `background: radial-gradient(120% 60% at 50% 115%, var(--accent) 0%, transparent 60%), #0b0a12;`
   plus a full-frame noise layer at 2 % opacity (an SVG `feTurbulence` or a tiled noise PNG) so the gradient never
@@ -90,6 +108,23 @@ go plus a cost estimate first. Local builds (brag-slim/HTML, After Effects, Blen
   first, find its downbeats with librosa (the video Python env, see README), and put the logo, reveal and CTA on them.
 - SFX: whoosh only on real transitions, soft UI ticks on real clicks/counters, one hit on the end card
   (business-motion-film `references/audio.md`, `scripts/sfx-candidates.py`, `scripts/solve-sfx-gains.py`).
+- **Approved soft palette (glass launch, 2026-10-16).** The first mix was called "aggressive"; the replacement was
+  approved. Start from this palette, and screen any new Artlist candidate by measurement, since names mislead:
+  - **Keep:** Smartphone UI menu click (117389), Bright UI select confirm (111703), Wood UI typing tap (125991),
+    TeaSound short swish (73713) and short swipe (73721), Krotos light airy whoosh (68217), Swift dry whoosh (84218),
+    Sweet UI pluck (135684) and gentle alert (135688), Graphix low bell (99172) and Tap on Glass (99196),
+    Cold Magic sparkle (71326).
+  - **Reject:** Casual UI and Modern UI clicks (58–86 % of energy at 2–8 kHz), Ideal Impacts thud and Transitional
+    Sub (about 100 % below 150 Hz; they muddy an EDM drop), Gliding Down Chime (86 % above 8 kHz), bubbly pops,
+    game taps, synth beeps, card flips, laptop typing, risers, reverse swells.
+  - **Treatment:** high-pass 120–400 Hz, low-pass 9–10 kHz, −3 dB shelf above 6 kHz, 5 ms fade-ins, one shared
+    short reverb (RT60 ~0.7 s), tonal cues tuned to the song's key.
+  - **Levels:** 8–18 dB under the music's local RMS, peaks capped at the music's local peak, 2–8 kHz lift ≤ 3.5 dB,
+    and an own-band audibility floor (~1.5 dB) so nothing is buried. Keep repeats equal with a group median, and
+    measure the 2–8 kHz reference over 1 s, because staccato micro-gaps fake "quiet".
+  - **Working script:** `rolvibe-glass-launch/work/build/sfx_mix.py`.
+- Artlist preview proxy: about 24 fast downloads trigger a Cloudflare 429 page saved as `.aac`. Fetch one every ~6 s,
+  back off 90–300 s on 429, and check the first byte isn't `<`.
 - Master: −14 to −10 LUFS integrated for kinetic films, true peak ≤ −1 dBTP; check with
   `~/.claude/skills/business-motion-film/scripts/loudness.sh`.
 

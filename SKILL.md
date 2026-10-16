@@ -35,6 +35,7 @@ credits: show the user the planned calls and cost and wait for a go.** /brag-sli
 | `3d-product-world` | flagship launches, templates, hardware-ish software | Framer 3D, Urpal AI | Blender scene, one glowing hero object travels through every shot, glass UI pills in macro, push through the screen |
 | `site-showcase` | website/landing-page launches, portfolio pieces | Help Scout, Urpal AI | the real site, scrolled and zoomed as one continuous camera move, loops end to start |
 | `crafted-story` | brand films, non-SaaS businesses, anthems | Slack, Nike Flyknit, Style Frames | strong art direction: monochrome + brand accent, one continuous transformation, or a pastel 3D world |
+| `light-glass-kinetic` | premium light-theme launch films (first used: Rolvibe glass launch, 2026-10-16) | ClickUp pacing + Help Scout light page | whitish-grey studio, frosted glass with real backdrop blur over brand-colour blooms, graphite type, real work in glass players |
 
 Mixing is fine inside one film (ClickUp uses a 3D chip; Framer uses kinetic type), but the base, palette and
 type system come from one family.
@@ -173,6 +174,12 @@ Report the numbers table to the user with the video.
 - No Higgsfield, Artlist generation or ElevenLabs call without the user's go and a cost estimate.
 
 ## 9. Learnings
+
+- 2026-10-16 (Rolvibe glass launch, light-glass-kinetic): the check caught 1.5 s still stretches on text holds and a weak
+  "camera moving" share (4.9 %) that keyframes alone didn't show. Continuous camera life fixed them: a stronger intro push
+  with drift and roll, a global WORLD DRIFT null under every bloom, a drifting base gradient, and gentle bobs on held cards.
+  Also verify music grids with a per-section comb search over a WIDE tempo window: a narrow 128.8-129.3 window locked onto
+  off-beat hats and a wrong 128.975 BPM (the song was exactly 130).
 
 - 2026-10-16: iteration 1 built from 9 references. Not yet proven with a demo render: next step is a 20 s
   rolvibe.com film via /brag-slim in `dark-glow-kinetic`, then `check_film.sh`, then tune the targets.

@@ -147,5 +147,40 @@
       7.0
     ],
     "_exception": "Nike Flyknit opens with 17 s of slow title fades on black, which the detector reads as still: a luxury-brand choice, not a SaaS pattern."
+  },
+  "light-glass-kinetic": {
+    "_from": "ClickUp/Bolt kinetic pacing + Help Scout light page, on a whitish-grey glass world (first used: ROLVIBE glass launch, 2026-10-16)",
+    "new_thing_every_s": [
+      0.9,
+      2.0
+    ],
+    "longest_static_before_end_s": [
+      null,
+      1.0
+    ],
+    "end_card_hold_s": [
+      2.0,
+      4.5
+    ],
+    "camera_moving_pct": [
+      25,
+      70
+    ],
+    "flash_frames_per_min": [
+      null,
+      1
+    ],
+    "brightness_mean": [
+      170,
+      235
+    ],
+    "loudness_lufs": [
+      -15,
+      -11
+    ],
+    "repeated_frames_in_motion_pct": [
+      null,
+      1.0
+    ]
   }
 }
